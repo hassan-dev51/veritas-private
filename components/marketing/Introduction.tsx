@@ -120,9 +120,9 @@ export default function Introduction() {
                     "Material Testing",
                     "Reusability Testing",
                     "Sterilization Testing",
-                    "Hardness Testing",
+                    "Cytotoxicity Testing",
                     "Biocompatibility Testing",
-                    "Microbiological Testing",
+                    "Bioburden Testing",
                   ].map((test, index) => (
                     <div
                       key={test}

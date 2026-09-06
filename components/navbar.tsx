@@ -170,7 +170,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[300px] sm:w-[400px] overflow-y-auto"
+              className="w-75 sm:w-100 overflow-y-auto"
             >
               <SheetHeader className="text-left border-b pb-4 mb-4">
                 <SheetTitle className="flex items-center space-x-2">

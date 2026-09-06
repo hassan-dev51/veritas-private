@@ -54,7 +54,7 @@ const SLIDES = [
     title: "Comprehensive Biocompatibility Testing",
     description:
       "Biological evaluation for medical device materials according to ISO 10993 standards to guarantee systemic safety and tissue compatibility.",
-    bgImage: "/images/biocompatibility.jpg",
+    bgImage: "/images/bio-compt.jpg",
     tintClass: "from-slate-950/90 via-slate-950/75 to-teal-950/60",
     badge: "ISO 10993-1 / FDA Standards",
     icon: Dna,
@@ -88,7 +88,7 @@ const SLIDES = [
     title: "Bioburden & Microbial Limits Testing",
     description:
       "Determining precise pre-sterilization microbial counts to validate effective sterilization doses and maintain regulatory compliance.",
-    bgImage: "/images/bioburden.jpg",
+    bgImage: "/images/bio-burden.jpg",
     tintClass: "from-slate-950/90 via-slate-950/75 to-emerald-950/60",
     badge: "ISO 11737-1 Compliant",
     icon: Bug,
@@ -208,7 +208,7 @@ export function Hero() {
       {/* Full-width Carousel Viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {SLIDES.map((slide) => {
+          {SLIDES.map((slide, index) => {
             const SlideIcon = slide.icon;
             return (
               <div
@@ -221,12 +221,15 @@ export function Hero() {
                     src={slide.bgImage}
                     alt={slide.title}
                     fill
-                    priority
+                    sizes="100vw"
+                    priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    quality={80}
                     className="object-cover object-center"
                   />
                   {/* Tint Gradient overlay */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-r ${slide.tintClass}`}
+                    className={`absolute inset-0 bg-linear-to-r ${slide.tintClass}`}
                   />
                 </div>
 

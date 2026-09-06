@@ -1,5 +1,4 @@
 import CTA from "@/components/marketing/CTA";
-import Footer from "@/components/marketing/Footer";
 import { Hero } from "@/components/marketing/Hero";
 import Introduction from "@/components/marketing/Introduction";
 import Standards from "@/components/marketing/Standards";
@@ -7,21 +6,21 @@ import TestingProcess from "@/components/marketing/TestingProcess";
 import TestingServices from "@/components/marketing/TestingServices";
 import WhoWeServe from "@/components/marketing/WhoWeServe";
 import WhyChooseUs from "@/components/marketing/WhyChooseUs";
-import { Navbar } from "@/components/navbar";
+import { getTestingServices } from "@/lib/sanity/getTestingServices";
 
-export default function Home() {
+export default async function Home() {
+  const testingServices = await getTestingServices();
+
   return (
     <main>
-      <Navbar />
       <Hero />
       <Introduction />
-      <TestingServices />
+      <TestingServices services={testingServices} />
       <WhyChooseUs />
       <TestingProcess />
       <Standards />
       <WhoWeServe />
       <CTA />
-      <Footer />
     </main>
   );
 }

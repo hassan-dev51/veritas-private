@@ -1,155 +1,116 @@
+import Link from "next/link";
 import {
-  FlaskConical,
-  TestTube2,
-  Settings2,
-  Gauge,
-  ShieldCheck,
-  Microscope,
   ArrowUpRight,
+  Beaker,
+  Microscope,
+  ShieldCheck,
+  RefreshCw,
+  FlaskConical,
 } from "lucide-react";
 
-const services = [
-  {
-    title: "Material Testing",
-    description:
-      "Verification of material composition, grade, properties, and specifications for medical devices and surgical instruments.",
-    icon: FlaskConical,
-    href: "/testing/material-testing",
-    tintClass: "from-slate-950/90 via-blue-950/75 to-cyan-950/60",
-  },
-  {
-    title: "Chemical Testing",
-    description:
-      "Chemical analysis to verify material composition and ensure compliance with applicable specifications and requirements.",
-    icon: TestTube2,
-    href: "/testing/chemical-testing",
-    tintClass: "from-slate-950/90 via-emerald-950/75 to-teal-950/60",
-  },
-  {
-    title: "Mechanical Testing",
-    description:
-      "Mechanical property testing to evaluate the performance and suitability of materials used in medical devices.",
-    icon: Settings2,
-    href: "/testing/mechanical-testing",
-    tintClass: "from-slate-950/90 via-orange-950/75 to-amber-950/60",
-  },
-  {
-    title: "Hardness Testing",
-    description:
-      "Hardness measurement and verification for metallic materials used in surgical instruments and medical devices.",
-    icon: Gauge,
-    href: "/testing/hardness-testing",
-    tintClass: "from-slate-950/90 via-violet-950/75 to-purple-950/60",
-  },
-  {
-    title: "Biocompatibility Testing",
-    description:
-      "Testing support for evaluating biological safety and compatibility of materials used in medical devices.",
-    icon: ShieldCheck,
-    href: "/testing/biocompatibility-testing",
-    tintClass: "from-slate-950/90 via-rose-950/75 to-pink-950/60",
-  },
-  {
-    title: "Microbiological Testing",
-    description:
-      "Microbiological evaluation and testing to support the safety and quality requirements of medical devices.",
-    icon: Microscope,
-    href: "/testing/microbiological-testing",
-    tintClass: "from-slate-950/90 via-indigo-950/75 to-sky-950/60",
-  },
-] as const;
+import type { TestingServiceSummary } from "@/lib/sanity/types";
 
-export default function TestingServices() {
+interface TestingServicesProps {
+  services: TestingServiceSummary[];
+}
+
+const icons = [
+  FlaskConical,
+  Microscope,
+  ShieldCheck,
+  RefreshCw,
+  Beaker,
+  FlaskConical,
+];
+
+const backgrounds = [
+  "from-slate-950/95 via-blue-950/80 to-cyan-950/70",
+  "from-slate-950/95 via-rose-950/80 to-pink-950/70",
+  "from-slate-950/95 via-violet-950/80 to-purple-950/70",
+  "from-slate-950/95 via-blue-950/80 to-cyan-950/70",
+  "from-slate-950/95 via-indigo-950/80 to-sky-950/70",
+  "from-slate-950/95 via-emerald-950/80 to-teal-950/70",
+];
+
+export default function TestingServices({ services }: TestingServicesProps) {
+  if (!services?.length) {
+    return null;
+  }
+
   return (
     <section
       id="testing-services"
-      className="relative overflow-hidden bg-slate-50 py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-slate-50 py-24 sm:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full bg-sky-100 px-4 py-2 text-sm font-medium text-sky-700">
-            Our Testing Services
-          </span>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">
+            Testing Services
+          </p>
 
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            Testing Services for{" "}
-            <span className="text-sky-600">Medical & Surgical Devices</span>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+            Testing Solutions for Medical Devices
           </h2>
 
-          <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
-            Comprehensive laboratory testing services designed to help medical
-            device manufacturers verify materials, evaluate product performance,
-            and meet applicable quality and regulatory requirements.
+          <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
+            Technical testing services designed to support medical device
+            manufacturers, surgical instrument producers, and international
+            suppliers with reliable testing and documentation.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const Icon = service.icon;
+        {/* Services */}
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => {
+            const Icon = icons[index % icons.length];
+            const background = backgrounds[index % backgrounds.length];
 
             return (
-              <article
-                key={service.title}
-                className="group relative min-h-90 overflow-hidden rounded-2xl bg-slate-950 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
+              <Link
+                key={service._id}
+                href={`/testing/${service.slug.current}`}
+                className="group relative min-h-[340px] overflow-hidden rounded-3xl"
               >
                 {/* Background */}
                 <div
-                  className={`absolute inset-0 bg-linear-to-br ${service.tintClass}`}
+                  className={`absolute inset-0 bg-gradient-to-br ${background}`}
                 />
 
                 {/* Decorative glow */}
-                <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-white/10 blur-3xl transition-transform duration-700 group-hover:scale-150" />
+                <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/10 blur-3xl transition-transform duration-700 group-hover:scale-150" />
 
                 {/* Content */}
-                <div className="relative flex h-full flex-col p-7 sm:p-8">
-                  {/* Icon */}
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/10 backdrop-blur-sm">
-                    <Icon className="h-6 w-6 text-white" />
-                  </div>
+                <div className="relative flex h-full flex-col justify-between p-8">
+                  <div>
+                    <div className="flex items-start justify-between">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md">
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
 
-                  {/* Service Content */}
-                  <div className="mt-auto">
-                    <h3 className="text-2xl font-semibold text-white">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-all duration-300 group-hover:bg-white group-hover:text-slate-950">
+                        <ArrowUpRight className="h-5 w-5 text-white transition-colors group-hover:text-slate-950" />
+                      </div>
+                    </div>
+
+                    <h3 className="mt-10 text-2xl font-semibold tracking-tight text-white">
                       {service.title}
                     </h3>
 
-                    <p className="mt-3 max-w-sm text-sm leading-6 text-slate-300">
-                      {service.description}
+                    <p className="mt-4 line-clamp-4 text-sm leading-7 text-slate-200">
+                      {service.heroDescription ||
+                        "Explore our testing services and technical evaluation capabilities."}
                     </p>
+                  </div>
 
-                    {/* Learn More */}
-                    <a
-                      href={service.href}
-                      className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-sky-300"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </a>
+                  <div className="mt-8 flex items-center gap-2 text-sm font-medium text-white">
+                    Explore Testing
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </div>
                 </div>
-
-                {/* Bottom line */}
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-sky-400 transition-all duration-500 group-hover:w-full" />
-              </article>
+              </Link>
             );
           })}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-slate-500">
-            Need a specific test or technical requirement?
-          </p>
-
-          <a
-            href="/contact"
-            className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-sky-600 transition-colors hover:text-sky-700"
-          >
-            Contact our testing team
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
         </div>
       </div>
     </section>
