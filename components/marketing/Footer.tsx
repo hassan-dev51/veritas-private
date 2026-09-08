@@ -2,18 +2,35 @@ import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 const testingServices = [
-  "Material Testing",
-  "Chemical Testing",
-  "Mechanical Testing",
-  "Hardness Testing",
-  "Biocompatibility Testing",
-  "Microbiological Testing",
+  {
+    name: "Material Testing",
+    href: "/testing/material-testing",
+  },
+  {
+    name: "Cytotoxicity Testing",
+    href: "/testing/cytotoxicity-testing",
+  },
+  {
+    name: "Sterilization Testing",
+    href: "/testing/sterilization-testing",
+  },
+  {
+    name: "Reusability Testing",
+    href: "/testing/reusability-testing",
+  },
+  {
+    name: "Bioburden Testing",
+    href: "/testing/bioburden-testing",
+  },
+  {
+    name: "Biocompatibility Testing",
+    href: "/testing/biocompatibility-testing",
+  },
 ] as const;
 
 const companyLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "Testing Services", href: "/testing" },
-  { label: "Who We Serve", href: "#who-we-serve" },
+  { label: "About Us", href: "#about" },
+
   { label: "Contact Us", href: "/contact" },
 ] as const;
 
@@ -27,7 +44,7 @@ export default function Footer() {
           <div className="max-w-sm">
             <Link href="/" className="inline-flex items-center">
               <span className="text-2xl font-bold tracking-tight">
-                Veritas<span className="text-sky-400"> Testing</span>
+                Veritas<span className="text-sky-400"> Lab</span>
               </span>
             </Link>
 
@@ -73,12 +90,12 @@ export default function Footer() {
 
             <ul className="mt-5 space-y-3">
               {testingServices.map((service) => (
-                <li key={service}>
+                <li key={service.name}>
                   <Link
-                    href="/testing"
+                    href={service.href}
                     className="text-sm text-slate-400 transition-colors hover:text-white"
                   >
-                    {service}
+                    {service.name}
                   </Link>
                 </li>
               ))}
@@ -96,7 +113,7 @@ export default function Footer() {
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
 
                 <p className="text-sm leading-6 text-slate-400">
-                  Sialkot, Pakistan
+                  Plaza 66, 3rd floor, sector A, Avenue 4, DHA Phase 6, Lahore, Pakistan
                 </p>
               </div>
 

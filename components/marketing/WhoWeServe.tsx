@@ -98,14 +98,6 @@ export default function WhoWeServe() {
                 </div>
               </div>
             </div>
-
-            <a
-              href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-950"
-            >
-              Discuss Your Testing Requirement
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </a>
           </div>
 
           {/* Right - Vertical List */}

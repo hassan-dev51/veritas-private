@@ -70,11 +70,11 @@ export default function TestingServices({ services }: TestingServicesProps) {
               <Link
                 key={service._id}
                 href={`/testing/${service.slug.current}`}
-                className="group relative min-h-[340px] overflow-hidden rounded-3xl"
+                className="group relative min-h-85 overflow-hidden rounded-3xl"
               >
                 {/* Background */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${background}`}
+                  className={`absolute inset-0 bg-linear-to-br ${background}`}
                 />
 
                 {/* Decorative glow */}

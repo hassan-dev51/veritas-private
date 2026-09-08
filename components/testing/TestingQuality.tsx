@@ -44,7 +44,7 @@ export default function TestingQuality({ content }: Props) {
             <div className="border-t border-white/10 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-16">
               <FileCheck2 className="h-6 w-6 text-sky-400" />
 
-              <div className="prose prose-invert mt-7 max-w-2xl prose-p:leading-8 prose-p:text-slate-300">
+              <div className="prose prose-invert mt-7 max-w-2xl prose-p:leading-8 text-slate-300">
                 <PortableText value={content} />
               </div>
             </div>

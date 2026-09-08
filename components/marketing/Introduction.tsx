@@ -28,7 +28,7 @@ export default function Introduction() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
+    <section id="about" className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Content */}
@@ -123,6 +123,7 @@ export default function Introduction() {
                     "Cytotoxicity Testing",
                     "Biocompatibility Testing",
                     "Bioburden Testing",
+                    "Microbiological Testing",
                   ].map((test, index) => (
                     <div
                       key={test}

@@ -1,4 +1,5 @@
 import { ArrowRight, ClipboardCheck, Mail, MessageSquare } from "lucide-react";
+import Link from "next/link";
 
 const contactOptions = [
   {
@@ -56,20 +57,13 @@ export default function CTA() {
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
+              <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-sky-50"
               >
                 Request Testing
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-
-              <a
-                href="/testing"
-                className="inline-flex items-center justify-center rounded-lg border border-white/15 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/30 hover:bg-white/5"
-              >
-                Explore Testing Services
-              </a>
+              </Link>
             </div>
           </div>
         </div>

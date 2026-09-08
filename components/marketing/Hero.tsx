@@ -253,18 +253,11 @@ export function Hero() {
                     <div className="flex flex-wrap gap-3 pt-2">
                       <Button
                         size="lg"
-                        className="bg-blue-600 hover:bg-blue-700 text-white"
-                        asChild
-                      >
-                        <Link href="#contact-us">Request a Quote</Link>
-                      </Button>
-                      <Button
-                        size="lg"
                         variant="outline"
                         className="border-white/30 bg-white/10 text-white hover:bg-white/20"
                         asChild
                       >
-                        <Link href="#services">View Testing Services</Link>
+                        <Link href="#testing-services">View Testing Services</Link>
                       </Button>
                     </div>
 

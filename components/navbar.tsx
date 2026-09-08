@@ -36,62 +36,60 @@ import { cn } from "@/lib/utils";
 const labServices = [
   {
     title: "Reusability Test",
-    href: "#reusability",
+    href: "/testing/reusability-testing",
     icon: RefreshCw,
     description:
       "Evaluates multi-cycle durability, material fatigue, and cleaning process integrity.",
   },
   {
     title: "Biocompatibility Test",
-    href: "#biocompatibility",
+    href: "/testing/biocompatibility-testing",
     icon: Dna,
     description:
       "Assesses tissue and biological response safety according to ISO 10993 standards.",
   },
   {
     title: "Cytotoxicity Test",
-    href: "#cytotoxicity",
+    href: "/testing/cytotoxicity-testing",
     icon: Microscope,
     description:
       "In vitro analysis screening cell reactivity, lysis, and toxicity parameters.",
   },
   {
     title: "Bioburden Test",
-    href: "#bioburden",
+    href: "/testing/bioburden-testing",
     icon: Bug,
     description:
       "Determines total population of viable microorganisms prior to sterilization.",
   },
   {
     title: "Sterilization Test",
-    href: "#sterilization",
+    href: "/testing/sterilization-testing",
     icon: Flame,
     description:
       "Validates process efficacy, biological indicators, and sterility assurance levels.",
   },
   {
     title: "Material Test",
-    href: "#material-testing",
+    href: "/testing/material-testing",
     icon: TestTube2,
     description:
       "Mechanical, chemical, and structural analysis of raw materials and alloys.",
+  },
+  {
+    title: "Microbiological Test",
+    href: "/testing/microbiological-testing",
+    icon: Microscope,
+    description:
+      "In vitro analysis of microbial contamination and biological activity.",
   },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsOpen(false);
-    const element = document.getElementById("contact-us");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-8">
         {/* Brand Logo */}
         <Link
@@ -127,17 +125,6 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Regular Navigation Links */}
-              {/* Regular Navigation Links */}
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
-                >
-                  <Link href="#accreditation">Accreditation</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
               <NavigationMenuItem>
                 <NavigationMenuLink
                   asChild
@@ -152,12 +139,12 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:space-x-4">
-          <Button
-            onClick={scrollToContact}
-            className="bg-blue-600 hover:bg-blue-700"
+          <Link
+            href={"/contact"}
+            className="bg-blue-600 hover:bg-blue-700 px-4 py-3 rounded-md text-white font-medium transition-colors"
           >
             Contact Us
-          </Button>
+          </Link>
         </div>
 
         {/* Mobile Navigation (Sheet Component) */}
@@ -208,13 +195,6 @@ export function Navbar() {
                 {/* Mobile Direct Links */}
                 <div className="border-t pt-4 flex flex-col space-y-2">
                   <Link
-                    href="#accreditations"
-                    onClick={() => setIsOpen(false)}
-                    className="text-sm font-medium py-1.5 hover:text-blue-600"
-                  >
-                    Accreditations
-                  </Link>
-                  <Link
                     href="#about"
                     onClick={() => setIsOpen(false)}
                     className="text-sm font-medium py-1.5 hover:text-blue-600"
@@ -224,12 +204,13 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile CTA */}
-                <Button
-                  onClick={scrollToContact}
-                  className="w-full bg-blue-600 hover:bg-blue-700 mt-2"
+                <Link
+                  href={"/contact"}
+                  onClick={() => setIsOpen(false)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 mt-2 px-4 py-3"
                 >
                   Contact Us
-                </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
@@ -254,7 +235,8 @@ function ListItem({
 }: ListItemProps) {
   return (
     <NavigationMenuLink asChild>
-      <a
+      <Link
+        href={""}
         className={cn(
           "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
           className,
@@ -268,7 +250,7 @@ function ListItem({
         <p className="line-clamp-2 text-xs leading-snug text-slate-500 dark:text-slate-400 mt-1.5">
           {children}
         </p>
-      </a>
+      </Link>
     </NavigationMenuLink>
   );
 }

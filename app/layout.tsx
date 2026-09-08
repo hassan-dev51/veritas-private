@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/marketing/Footer";
-
+import NextTopLoader from "nextjs-toploader";
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["cyrillic-ext"],
@@ -70,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${roboto.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-roboto bg-background">
+        <NextTopLoader />
         <Navbar />
         {children}
         <Footer />
