@@ -113,7 +113,8 @@ export default function Footer() {
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
 
                 <p className="text-sm leading-6 text-slate-400">
-                  Plaza 66, 3rd floor, sector A, Avenue 4, DHA Phase 6, Lahore, Pakistan
+                  Plaza 66, 3rd floor, sector A, Avenue 4, DHA Phase 6, Lahore,
+                  Pakistan
                 </p>
               </div>
 
@@ -128,14 +129,16 @@ export default function Footer() {
                 </Link>
               </div>
 
+              <p className="text-sm">
+                Mr. Luqman <span className="text-sky-400">Asst Technician</span>
+              </p>
               <div className="flex gap-3">
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
-
                 <Link
                   href="tel:+920000000000"
                   className="text-sm text-slate-400 transition-colors hover:text-white"
                 >
-                  +92 XXX XXXXXXX
+                  +92 306 8260027
                 </Link>
               </div>
             </div>
