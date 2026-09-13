@@ -11,6 +11,7 @@ export async function submitContactForm(
   const values = {
     name: String(formData.get("name") ?? ""),
     company: String(formData.get("company") ?? ""),
+    ntn: String(formData.get("ntn") ?? ""),
     email: String(formData.get("email") ?? ""),
     phone: String(formData.get("phone") ?? ""),
     service: String(formData.get("service") ?? ""),
@@ -39,13 +40,12 @@ export async function submitContactForm(
     };
   }
 
-  const { name, company, email, phone, service, message } = result.data;
+  const { name, company, ntn, email, phone, service, message } = result.data;
 
-  const gmailUser = process.env.GMAIL_USER;
   const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
   const labEmail = process.env.LAB_EMAIL;
 
-  if (!gmailUser || !gmailAppPassword || !labEmail) {
+  if (!gmailAppPassword || !labEmail) {
     console.error("Missing Gmail environment variables.");
 
     return {
@@ -59,15 +59,17 @@ export async function submitContactForm(
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.hostinger.com",
+      port: 465,
+      secure: true,
       auth: {
-        user: gmailUser,
+        user: labEmail,
         pass: gmailAppPassword,
       },
     });
 
     await transporter.sendMail({
-      from: `"Veritas Testing Website" <${gmailUser}>`,
+      from: `"Veritas Testing Website" <${labEmail}>`,
       to: labEmail,
       replyTo: email,
 
@@ -78,6 +80,7 @@ New contact form submission from Veritas Testing website
 
 Name: ${name}
 Company: ${company}
+NTN Number: ${ntn}
 Email: ${email}
 Phone: ${phone}
 Testing Service: ${service}
@@ -88,19 +91,23 @@ ${message}
 
       html: `
         <div style="font-family: Arial, Helvetica, sans-serif; max-width: 700px; margin: 0 auto; color: #0f172a;">
-          
+
+          <!-- Header -->
           <div style="padding: 24px; background: #0f172a; color: white; border-radius: 12px 12px 0 0;">
             <h2 style="margin: 0; font-size: 22px;">
               New Testing Inquiry
             </h2>
+
             <p style="margin: 8px 0 0; color: #cbd5e1;">
               Veritas Testing Website
             </p>
           </div>
 
+          <!-- Content -->
           <div style="padding: 28px; border: 1px solid #e2e8f0; border-top: 0; border-radius: 0 0 12px 12px;">
-            
+
             <table style="width: 100%; border-collapse: collapse;">
+
               <tr>
                 <td style="padding: 10px 0; font-weight: 600; width: 160px;">
                   Name
@@ -116,6 +123,15 @@ ${message}
                 </td>
                 <td style="padding: 10px 0;">
                   ${escapeHtml(company)}
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding: 10px 0; font-weight: 600;">
+                  NTN Number
+                </td>
+                <td style="padding: 10px 0;">
+                  ${escapeHtml(ntn ?? "Not provided")}
                 </td>
               </tr>
 
@@ -147,19 +163,40 @@ ${message}
                   ${escapeHtml(service)}
                 </td>
               </tr>
+
             </table>
 
+            <!-- Message -->
             <div style="margin-top: 28px;">
+
               <h3 style="margin-bottom: 10px;">
                 Message
               </h3>
 
-              <div style="padding: 18px; background: #f8fafc; border-radius: 8px; white-space: pre-wrap; line-height: 1.7;">
+              <div
+                style="
+                  padding: 18px;
+                  background: #f8fafc;
+                  border-radius: 8px;
+                  white-space: pre-wrap;
+                  line-height: 1.7;
+                "
+              >
                 ${escapeHtml(message)}
               </div>
+
             </div>
 
-            <div style="margin-top: 28px; padding-top: 18px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 13px;">
+            <!-- Footer -->
+            <div
+              style="
+                margin-top: 28px;
+                padding-top: 18px;
+                border-top: 1px solid #e2e8f0;
+                color: #64748b;
+                font-size: 13px;
+              "
+            >
               This inquiry was submitted through the Veritas Testing website contact form.
             </div>
 
@@ -172,6 +209,7 @@ ${message}
       values: {
         name: "",
         company: "",
+        ntn: "",
         email: "",
         phone: "",
         service: "",

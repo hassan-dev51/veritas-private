@@ -9,28 +9,34 @@ import {
 } from "lucide-react";
 
 import type { MaterialTesting } from "@/lib/sanity/types";
+import Image from "next/image";
+import { log } from "console";
 
 interface Props {
   data: MaterialTesting;
 }
 
 export default function TestingHero({ data }: Props) {
+  log("TestingHero data:", data); // Log the data to the console for debugging
   return (
-    <section className="relative isolate overflow-hidden bg-slate-950">
+    <section className="relative isolate overflow-hidden bg-slate-800">
       {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/4 top-0 h-125 w-125 rounded-full bg-sky-500/10 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-100 w-100 rounded-full bg-cyan-400/10 blur-[100px]" />
 
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-      </div>
+      {data.heroImage?.asset?.url && (
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src={data.heroImage.asset.url}
+            alt={data.heroImage.alt || data.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+
+          <div className="absolute inset-0 bg-slate-800/70" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-800 via-slate-800/80 to-slate-800/40" />
+        </div>
+      )}
 
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-36">
         <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
@@ -39,7 +45,7 @@ export default function TestingHero({ data }: Props) {
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-sky-400" />
 
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-400">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
                 Material Testing
               </span>
             </div>
@@ -82,7 +88,7 @@ export default function TestingHero({ data }: Props) {
                   key={item}
                   className="flex items-center gap-2 text-sm text-slate-400"
                 >
-                  <CheckCircle2 className="h-4 w-4 text-sky-400" />
+                  <CheckCircle2 className="h-4 w-4 text-sky-600" />
                   {item}
                 </div>
               ))}
@@ -98,14 +104,14 @@ export default function TestingHero({ data }: Props) {
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="flex h-44 w-44 items-center justify-center rounded-[2rem] border border-white/10 bg-white/4 shadow-2xl backdrop-blur-xl">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-400">
+                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-600">
                     <FlaskConical className="h-12 w-12" strokeWidth={1.5} />
                   </div>
                 </div>
               </div>
 
               <div className="absolute left-0 top-1/4 rounded-xl border border-white/10 bg-white/4 p-4 backdrop-blur-xl">
-                <FlaskConical className="h-5 w-5 text-sky-400" />
+                <FlaskConical className="h-5 w-5 text-sky-600" />
                 <p className="mt-2 text-xs font-semibold text-white">
                   Material
                 </p>

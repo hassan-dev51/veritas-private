@@ -81,7 +81,7 @@ export default function WhoWeServe() {
 
             <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-950 text-sky-400">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-950 text-sky-600">
                   <Building2 className="h-5 w-5" />
                 </div>
 

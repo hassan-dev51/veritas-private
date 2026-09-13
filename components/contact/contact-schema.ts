@@ -12,6 +12,7 @@ export const contactFormSchema = z.object({
     .trim()
     .min(2, "Please enter your company name.")
     .max(150, "Company name is too long."),
+  ntn: z.string().trim().optional(),
 
   email: z
     .email("Please enter a valid email address.")
@@ -52,6 +53,7 @@ export const initialContactFormState: ContactFormState = {
     email: "",
     phone: "",
     service: "",
+    ntn: "",
     message: "",
     website: "",
   },

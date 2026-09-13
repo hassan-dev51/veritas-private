@@ -1,66 +1,83 @@
-// src/components/testing/TestingProcess.tsx
-
-import {
-  ClipboardList,
-  FileCheck2,
-  FlaskConical,
-  SearchCheck,
-} from "lucide-react";
+import Image from "next/image";
 
 import type { MaterialTestingProcess } from "@/lib/sanity/types";
 
-interface Props {
+interface TestingProcessProps {
   process: MaterialTestingProcess[];
+  image?: {
+    asset?: {
+      _id: string;
+      url: string;
+    };
+    alt?: string;
+  };
 }
 
-const icons = [ClipboardList, SearchCheck, FlaskConical, FileCheck2];
-
-export default function TestingProcess({ process }: Props) {
-  if (!process?.length) return null;
-
+export default function TestingProcess({
+  process,
+  image,
+}: TestingProcessProps) {
   return (
-    <section className="bg-white py-20 sm:py-24 lg:py-32">
+    <section className="bg-slate-950 py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-600">
-            04 / Process
-          </span>
+        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-400">
+              Our Approach
+            </p>
 
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            From Sample to Technical Report
-          </h2>
-        </div>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Testing Process
+            </h2>
 
-        <div className="relative mt-16">
-          <div className="absolute left-0 right-0 top-7 hidden h-px bg-slate-200 lg:block" />
+            <p className="mt-5 text-lg leading-8 text-slate-400">
+              A structured process helps ensure that testing requirements,
+              samples, methods, and reporting are clearly defined.
+            </p>
 
-          <div className="grid gap-10 lg:grid-cols-4 lg:gap-6">
-            {process.map((item, index) => {
-              const Icon = icons[index % icons.length];
+            <div className="mt-12">
+              {process.map((item, index) => (
+                <div
+                  key={`${item.title}-${index}`}
+                  className="relative flex gap-6 pb-10 last:pb-0"
+                >
+                  {index !== process.length - 1 && (
+                    <div className="absolute left-5 top-12 h-[calc(100%-24px)] w-px bg-slate-800" />
+                  )}
 
-              return (
-                <div key={`${item.title}-${index}`} className="relative">
-                  <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white text-sky-600 shadow-sm">
-                    <Icon className="h-6 w-6" />
+                  <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-sky-500/30 bg-slate-900 text-sm font-semibold text-sky-400">
+                    {item.step ?? index + 1}
                   </div>
 
-                  <span className="mt-6 block text-xs font-bold uppercase tracking-widest text-slate-400">
-                    Step {item.step || index + 1}
-                  </span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {item.title}
+                    </h3>
 
-                  <h3 className="mt-2 text-lg font-semibold text-slate-950">
-                    {item.title}
-                  </h3>
-
-                  {item.description && (
-                    <p className="mt-3 text-sm leading-7 text-slate-500">
-                      {item.description}
-                    </p>
-                  )}
+                    {item.description && (
+                      <p className="mt-2 leading-7 text-slate-400">
+                        {item.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
+
+          {image?.asset?.url && (
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <div className="overflow-hidden rounded-2xl border border-white/10">
+                <Image
+                  src={image.asset.url}
+                  alt={image.alt || "Medical device testing process"}
+                  width={1200}
+                  height={1000}
+                  className="aspect-4/3 w-full object-cover"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -1,62 +1,55 @@
-// src/components/testing/TestingIntroduction.tsx
-
+import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import { CheckCircle2 } from "lucide-react";
 
 import type { MaterialTesting } from "@/lib/sanity/types";
 
-interface Props {
+interface TestingIntroductionProps {
   data: MaterialTesting;
 }
 
-export default function TestingIntroduction({ data }: Props) {
-  if (!data.introduction?.length) return null;
+export default function TestingIntroduction({
+  data,
+}: TestingIntroductionProps) {
+  if (!data.introduction?.length) {
+    return null;
+  }
 
   return (
-    <section className="bg-white py-20 sm:py-24 lg:py-32">
+    <section className="bg-white py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
+        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-600">
-              01 / Overview
-            </span>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
+              Overview
+            </p>
 
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-              Understanding Material Testing
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              {data.title}
             </h2>
 
-            <div className="mt-8 border-l-2 border-sky-500 pl-5">
-              <p className="text-sm leading-7 text-slate-500">
-                Material verification plays an important role in evaluating
-                materials used in medical devices and surgical instruments.
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-3xl">
-            <div className="prose prose-slate max-w-none prose-headings:text-slate-950 prose-p:leading-8 prose-p:text-slate-600">
+            <div className="prose prose-slate mt-7 max-w-none leading-7">
               <PortableText value={data.introduction} />
             </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                "Material composition",
-                "Grade verification",
-                "Technical requirements",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl border border-slate-200 bg-slate-50 p-4"
-                >
-                  <CheckCircle2 className="h-5 w-5 text-sky-600" />
-
-                  <p className="mt-3 text-sm font-semibold text-slate-800">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
+
+          {data.introductionImage?.asset?.url && (
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl">
+                <Image
+                  src={data.introductionImage.asset.url}
+                  alt={
+                    data.introductionImage.alt ||
+                    `${data.title} laboratory testing`
+                  }
+                  width={1200}
+                  height={900}
+                  className="aspect-4/3 w-full object-cover"
+                />
+              </div>
+
+              <div className="absolute -bottom-5 -left-5 -z-10 h-32 w-32 rounded-2xl bg-sky-100" />
+            </div>
+          )}
         </div>
       </div>
     </section>

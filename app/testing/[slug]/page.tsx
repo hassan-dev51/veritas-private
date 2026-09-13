@@ -1,8 +1,7 @@
-// src/app/testing/[slug]/page.tsx
-
 import { notFound } from "next/navigation";
 
 import { getMaterialTesting } from "@/lib/sanity/getMaterialTesting";
+
 import TestingHero from "@/components/testing/TestingHero";
 import TestingIntroduction from "@/components/testing/TestingIntroduction";
 import TestingServices from "@/components/testing/TestingServices";
@@ -13,11 +12,8 @@ import TestingQuality from "@/components/testing/TestingQuality";
 import TestingFaqs from "@/components/testing/TestingFaqs";
 import TestingCTA from "@/components/testing/TestingCTA";
 
-
 interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }
 
 export default async function TestingDetailPage({ params }: PageProps) {
@@ -27,8 +23,8 @@ export default async function TestingDetailPage({ params }: PageProps) {
 
   if (!testing) {
     notFound();
-  } 
-  
+  }
+
   return (
     <main>
       <TestingHero data={testing} />
@@ -42,19 +38,31 @@ export default async function TestingDetailPage({ params }: PageProps) {
       ) : null}
 
       {testing.standards?.length ? (
-        <TestingStandards standards={testing.standards} />
+        <TestingStandards
+          standards={testing.standards}
+          image={testing.standardsImage}
+        />
       ) : null}
 
       {testing.process?.length ? (
-        <TestingProcess process={testing.process} />
+        <TestingProcess
+          process={testing.process}
+          image={testing.processImage}
+        />
       ) : null}
 
       {testing.markets?.length ? (
-        <TestingMarkets markets={testing.markets} />
+        <TestingMarkets
+          markets={testing.markets}
+          image={testing.marketsImage}
+        />
       ) : null}
 
       {testing.qualityContent?.length ? (
-        <TestingQuality content={testing.qualityContent} />
+        <TestingQuality
+          content={testing.qualityContent}
+          image={testing.qualityImage}
+        />
       ) : null}
 
       {testing.faqs?.length ? <TestingFaqs faqs={testing.faqs} /> : null}

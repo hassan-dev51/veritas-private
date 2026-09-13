@@ -58,13 +58,13 @@ export default function TestingProcess() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-sky-400">
+          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-sky-600">
             Our Testing Process
           </span>
 
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             A Clear & Structured{" "}
-            <span className="text-sky-400">Testing Process</span>
+            <span className="text-sky-600">Testing Process</span>
           </h2>
 
           <p className="mt-5 text-base leading-8 text-slate-400 sm:text-lg">
@@ -86,12 +86,12 @@ export default function TestingProcess() {
               return (
                 <div key={step.number} className="group relative text-center">
                   {/* Step Icon */}
-                  <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-slate-900 text-sky-400 shadow-lg shadow-black/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-sky-400/40 group-hover:bg-sky-500 group-hover:text-white">
+                  <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-slate-900 text-sky-600 shadow-lg shadow-black/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-sky-400/40 group-hover:bg-sky-500 group-hover:text-white">
                     <Icon className="h-6 w-6" />
                   </div>
 
                   {/* Step Number */}
-                  <div className="mt-5 text-xs font-semibold tracking-[0.2em] text-sky-400">
+                  <div className="mt-5 text-xs font-semibold tracking-[0.2em] text-sky-600">
                     STEP {step.number}
                   </div>
 

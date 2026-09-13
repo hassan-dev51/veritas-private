@@ -14,15 +14,44 @@ export const materialTestingQuery = groq`
     heroHeading,
     heroDescription,
 
+    heroImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+
     introduction,
+    introductionImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
 
     services[]{
       title,
       shortDescription,
-      content
+      content,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
     },
 
-    standards[],
+    standards,
+    standardsImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
 
     process[]{
       step,
@@ -30,12 +59,36 @@ export const materialTestingQuery = groq`
       description
     },
 
+    processImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+
     markets[]{
       name,
       description
     },
 
+    marketsImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+
     qualityContent,
+
+    qualityImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
 
     faqs[]{
       question,
@@ -46,7 +99,14 @@ export const materialTestingQuery = groq`
       heading,
       description,
       buttonText,
-      buttonLink
+      buttonLink,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
     },
 
     seo{

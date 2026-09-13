@@ -95,10 +95,10 @@ export default function Standards() {
               <div>
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
-                    <FileCheck2 className="h-5 w-5 text-sky-400" />
+                    <FileCheck2 className="h-5 w-5 text-sky-600" />
                   </div>
 
-                  <span className="text-sm font-semibold uppercase tracking-wider text-sky-400">
+                  <span className="text-sm font-semibold uppercase tracking-wider text-sky-600">
                     Technical Documentation
                   </span>
                 </div>

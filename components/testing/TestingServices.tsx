@@ -1,68 +1,87 @@
-// src/components/testing/TestingServices.tsx
-
-import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 
 import type { MaterialTestingService } from "@/lib/sanity/types";
 
-interface Props {
+interface TestingServicesProps {
   services: MaterialTestingService[];
 }
 
-export default function TestingServices({ services }: Props) {
-  if (!services?.length) return null;
-
+export default function TestingServices({ services }: TestingServicesProps) {
+  console.log("TestingServices props:", services); // Log the props to the console for debugging
   return (
-    <section className="bg-slate-50 py-20 sm:py-24 lg:py-32">
+    <section className="bg-slate-50 py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-600">
-            02 / Capabilities
-          </span>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
+            Testing Scope
+          </p>
 
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            Material Testing Capabilities
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            Testing Services
           </h2>
 
-          <p className="mt-5 text-base leading-8 text-slate-600">
-            Testing capabilities can be tailored according to the material,
-            product, applicable specifications, and intended requirements.
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Testing activities are selected according to the device, materials,
+            intended use, applicable requirements, and testing objectives.
           </p>
         </div>
 
-        <div className="mt-14 divide-y divide-slate-200 border-y border-slate-200">
-          {services.map((service, index) => (
-            <article
-              key={`${service.title}-${index}`}
-              className="group grid gap-6 py-8 transition-all duration-300 lg:grid-cols-[100px_1fr_auto] lg:items-start"
-            >
-              <span className="text-sm font-bold text-slate-300 transition-colors group-hover:text-sky-500">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+        <div className="mt-16 space-y-20">
+          {services.map((service, index) => {
+            const reversed = index % 2 !== 0;
 
-              <div>
-                {service.title && (
-                  <h3 className="text-xl font-semibold text-slate-950 sm:text-2xl">
+            return (
+              <article
+                key={`${service.title}-${index}`}
+                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+              >
+                <div className={reversed ? "lg:order-2" : "lg:order-1"}>
+                  {service.image?.asset?.url ? (
+                    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+                      <Image
+                        src={service.image.asset.url}
+                        alt={
+                          service.image.alt ||
+                          service.title ||
+                          "Medical device testing"
+                        }
+                        width={1200}
+                        height={900}
+                        className="aspect-4/3 w-full object-cover transition duration-500 hover:scale-105"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex aspect-4/3 items-center justify-center rounded-2xl border border-slate-200 bg-slate-100 text-sm text-slate-400">
+                      Image Uploaded for {service.title} is not available
+                    </div>
+                  )}
+                </div>
+
+                <div className={reversed ? "lg:order-1" : "lg:order-2"}>
+                  <span className="text-sm font-semibold text-sky-600">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
                     {service.title}
                   </h3>
-                )}
 
-                {service.shortDescription && (
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
-                    {service.shortDescription}
-                  </p>
-                )}
+                  {service.shortDescription && (
+                    <p className="mt-5 text-lg leading-8 text-slate-600">
+                      {service.shortDescription}
+                    </p>
+                  )}
 
-                {service.content?.length ? (
-                  <div className="prose prose-sm prose-slate mt-5 max-w-2xl">
-                    <PortableText value={service.content} />
-                  </div>
-                ) : null}
-              </div>
-
-              <ArrowUpRight className="hidden h-5 w-5 text-slate-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-sky-600 lg:block" />
-            </article>
-          ))}
+                  {service.content?.length ? (
+                    <div className="prose prose-slate mt-6 max-w-none">
+                      <PortableText value={service.content} />
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

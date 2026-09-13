@@ -156,31 +156,46 @@ export default function ContactForm() {
           </div>
 
           {/* Testing Service */}
-          <Field data-invalid={Boolean(formState.errors?.service?.length)}>
-            <FieldLabel htmlFor="service">Testing Service</FieldLabel>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <Field data-invalid={Boolean(formState.errors?.service?.length)}>
+              <FieldLabel htmlFor="service">Testing Service</FieldLabel>
 
-            <select
-              id="service"
-              name="service"
-              defaultValue={formState.values.service}
-              disabled={pending}
-              aria-invalid={Boolean(formState.errors?.service?.length)}
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <option value="">Select a testing service</option>
+              <select
+                id="service"
+                name="service"
+                defaultValue={formState.values.service}
+                disabled={pending}
+                aria-invalid={Boolean(formState.errors?.service?.length)}
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <option value="">Select a testing service</option>
 
-              {testingServices.map((service) => (
-                <option key={service.value} value={service.value}>
-                  {service.label}
-                </option>
-              ))}
-            </select>
+                {testingServices.map((service) => (
+                  <option key={service.value} value={service.value}>
+                    {service.label}
+                  </option>
+                ))}
+              </select>
 
-            {formState.errors?.service && (
-              <FieldError>{formState.errors.service[0]}</FieldError>
-            )}
-          </Field>
+              {formState.errors?.service && (
+                <FieldError>{formState.errors.service[0]}</FieldError>
+              )}
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="ntn">NTN Number</FieldLabel>
 
+              <Input
+                id="ntn"
+                name="ntn"
+                type="text"
+                placeholder="Your NTN number"
+                defaultValue={formState.values.ntn}
+                disabled={pending}
+                aria-invalid={Boolean(formState.errors?.ntn?.length)}
+                autoComplete="Off"
+              />
+            </Field>
+          </div>
           {/* Message */}
           <Field data-invalid={Boolean(formState.errors?.message?.length)}>
             <FieldLabel htmlFor="message">Your Testing Requirements</FieldLabel>

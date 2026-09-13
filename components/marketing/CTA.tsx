@@ -41,13 +41,13 @@ export default function CTA() {
           <div className="pointer-events-none absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl" />
 
           <div className="relative mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center rounded-full border border-sky-400/20 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-400">
+            <span className="inline-flex items-center rounded-full border border-sky-400/20 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-600">
               Testing Support for Medical Devices
             </span>
 
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Need Reliable Testing for Your{" "}
-              <span className="text-sky-400">Medical Device?</span>
+              <span className="text-sky-600">Medical Device?</span>
             </h2>
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">

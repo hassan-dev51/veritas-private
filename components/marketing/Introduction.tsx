@@ -101,7 +101,7 @@ export default function Introduction() {
               <div className="relative">
                 <div className="mb-8 flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-sky-400">
+                    <p className="text-sm font-medium text-sky-600">
                       VERITAS LAB TESTING
                     </p>
                     <h3 className="mt-2 text-2xl font-semibold text-white">
@@ -110,7 +110,7 @@ export default function Introduction() {
                   </div>
 
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
-                    <FlaskConical className="h-6 w-6 text-sky-400" />
+                    <FlaskConical className="h-6 w-6 text-sky-600" />
                   </div>
                 </div>
 
@@ -129,7 +129,7 @@ export default function Introduction() {
                       key={test}
                       className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/4 px-4 py-4"
                     >
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-500/10 text-sm font-semibold text-sky-400">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-500/10 text-sm font-semibold text-sky-600">
                         {String(index + 1).padStart(2, "0")}
                       </div>
 

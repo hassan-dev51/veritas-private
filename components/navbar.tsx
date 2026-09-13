@@ -31,6 +31,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import TopBar from "./marketing/Topbar";
 
 // Structured testing services based on your lab offerings
 const labServices = [
@@ -90,14 +92,18 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4 md:px-8">
+      <TopBar />
+      <div className="container flex h-18 items-center justify-between px-4 md:px-8">
         {/* Brand Logo */}
-        <Link
-          href="/"
-          className="flex items-center space-x-2 font-bold text-xl tracking-tight text-slate-900 dark:text-slate-100"
-        >
-          <ShieldCheck className="h-6 w-6 text-blue-600" />
-          <span>Veritas Lab</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt="Veritas Lab Pvt Ltd"
+            width={180}
+            height={60}
+            className="h-20 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation (Mega Menu) */}
@@ -130,7 +136,7 @@ export function Navbar() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <Link href="#about">About Us</Link>
+                  <Link href="/about">About Us</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -141,7 +147,7 @@ export function Navbar() {
         <div className="hidden lg:flex lg:items-center lg:space-x-4">
           <Link
             href={"/contact"}
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-3 rounded-md text-white font-medium transition-colors"
+            className="bg-[#13314B] hover:bg-[#1a4a6e] px-4 py-3 rounded-md text-white font-medium transition-colors"
           >
             Contact Us
           </Link>
@@ -207,7 +213,7 @@ export function Navbar() {
                 <Link
                   href={"/contact"}
                   onClick={() => setIsOpen(false)}
-                  className="w-full bg-blue-600 hover:bg-blue-700 mt-2 px-4 py-3"
+                  className="w-full bg-[#13314B] hover:bg-[#1a4a6e] mt-2 px-4 py-3"
                 >
                   Contact Us
                 </Link>

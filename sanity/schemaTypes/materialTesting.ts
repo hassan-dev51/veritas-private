@@ -2,10 +2,14 @@ import { defineField, defineType } from "sanity";
 
 export const materialTesting = defineType({
   name: "materialTesting",
-  title: "Material Testing",
+  title: "Testing Service Page",
   type: "document",
 
   fields: [
+    // ============================================================
+    // BASIC INFORMATION
+    // ============================================================
+
     defineField({
       name: "title",
       title: "Page Title",
@@ -24,6 +28,10 @@ export const materialTesting = defineType({
       validation: (Rule) => Rule.required(),
     }),
 
+    // ============================================================
+    // HERO
+    // ============================================================
+
     defineField({
       name: "heroHeading",
       title: "Hero Heading",
@@ -40,6 +48,27 @@ export const materialTesting = defineType({
     }),
 
     defineField({
+      name: "heroImage",
+      title: "Hero Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // INTRODUCTION
+    // ============================================================
+
+    defineField({
       name: "introduction",
       title: "Introduction",
       type: "array",
@@ -51,8 +80,28 @@ export const materialTesting = defineType({
     }),
 
     defineField({
+      name: "introductionImage",
+      title: "Introduction Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // SERVICES
+    // ============================================================
+
+    defineField({
       name: "services",
-      title: "Material Testing Services",
+      title: "Testing Services",
       type: "array",
       of: [
         {
@@ -82,16 +131,45 @@ export const materialTesting = defineType({
                 },
               ],
             }),
+
+            defineField({
+              name: "image",
+              title: "Service Image",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: "alt",
+                  title: "Alternative Text",
+                  type: "string",
+                }),
+              ],
+            }),
           ],
+
           preview: {
             select: {
               title: "title",
               description: "shortDescription",
+              media: "image",
+            },
+            prepare({ title, description, media }) {
+              return {
+                title,
+                subtitle: description,
+                media,
+              };
             },
           },
         },
       ],
     }),
+
+    // ============================================================
+    // STANDARDS
+    // ============================================================
 
     defineField({
       name: "standards",
@@ -103,6 +181,26 @@ export const materialTesting = defineType({
         },
       ],
     }),
+
+    defineField({
+      name: "standardsImage",
+      title: "Standards Section Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // TESTING PROCESS
+    // ============================================================
 
     defineField({
       name: "process",
@@ -132,6 +230,7 @@ export const materialTesting = defineType({
               rows: 4,
             }),
           ],
+
           preview: {
             select: {
               title: "title",
@@ -141,6 +240,26 @@ export const materialTesting = defineType({
         },
       ],
     }),
+
+    defineField({
+      name: "processImage",
+      title: "Testing Process Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // INTERNATIONAL MARKETS
+    // ============================================================
 
     defineField({
       name: "markets",
@@ -164,9 +283,36 @@ export const materialTesting = defineType({
               rows: 4,
             }),
           ],
+
+          preview: {
+            select: {
+              title: "name",
+              subtitle: "description",
+            },
+          },
         },
       ],
     }),
+
+    defineField({
+      name: "marketsImage",
+      title: "Markets Section Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // QUALITY & RELIABILITY
+    // ============================================================
 
     defineField({
       name: "qualityContent",
@@ -178,6 +324,26 @@ export const materialTesting = defineType({
         },
       ],
     }),
+
+    defineField({
+      name: "qualityImage",
+      title: "Quality & Reliability Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // FAQS
+    // ============================================================
 
     defineField({
       name: "faqs",
@@ -205,6 +371,7 @@ export const materialTesting = defineType({
               ],
             }),
           ],
+
           preview: {
             select: {
               title: "question",
@@ -213,6 +380,10 @@ export const materialTesting = defineType({
         },
       ],
     }),
+
+    // ============================================================
+    // CALL TO ACTION
+    // ============================================================
 
     defineField({
       name: "cta",
@@ -243,6 +414,88 @@ export const materialTesting = defineType({
           title: "Button Link",
           type: "string",
         }),
+
+        defineField({
+          name: "image",
+          title: "CTA Background Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alternative Text",
+              type: "string",
+            }),
+          ],
+        }),
+      ],
+    }),
+
+    // ============================================================
+    // SEO
+    // ============================================================
+
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "object",
+      fields: [
+        defineField({
+          name: "metaTitle",
+          title: "Meta Title",
+          type: "string",
+          validation: (Rule) => Rule.max(60),
+        }),
+
+        defineField({
+          name: "metaDescription",
+          title: "Meta Description",
+          type: "text",
+          rows: 3,
+          validation: (Rule) => Rule.max(160),
+        }),
+
+        defineField({
+          name: "keywords",
+          title: "Keywords",
+          type: "array",
+          of: [
+            {
+              type: "string",
+            },
+          ],
+        }),
+
+        defineField({
+          name: "ogImage",
+          title: "Open Graph Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alternative Text",
+              type: "string",
+            }),
+          ],
+        }),
+
+        defineField({
+          name: "canonicalUrl",
+          title: "Canonical URL",
+          type: "url",
+        }),
+
+        defineField({
+          name: "noIndex",
+          title: "No Index",
+          type: "boolean",
+          initialValue: false,
+        }),
       ],
     }),
   ],
@@ -251,6 +504,14 @@ export const materialTesting = defineType({
     select: {
       title: "title",
       subtitle: "heroHeading",
+      media: "heroImage",
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title,
+        subtitle,
+        media,
+      };
     },
   },
 });

@@ -1,4 +1,5 @@
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const testingServices = [
@@ -29,7 +30,7 @@ const testingServices = [
 ] as const;
 
 const companyLinks = [
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
 
   { label: "Contact Us", href: "/contact" },
 ] as const;
@@ -41,11 +42,16 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_0.8fr_1fr_1fr] lg:gap-10">
           {/* Brand */}
-          <div className="max-w-sm">
-            <Link href="/" className="inline-flex items-center">
-              <span className="text-2xl font-bold tracking-tight">
-                Veritas<span className="text-sky-400"> Lab</span>
-              </span>
+          <div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo2.jpeg"
+                alt="Veritas Lab Pvt Ltd"
+                width={180}
+                height={160}
+                className="h-20 w-auto object-contain"
+                priority
+              />
             </Link>
 
             <p className="mt-5 text-sm leading-7 text-slate-400">
@@ -55,7 +61,7 @@ export default function Footer() {
 
             <a
               href="/contact"
-              className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-sky-400"
+              className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-sky-600"
             >
               Discuss Your Requirement
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -110,7 +116,7 @@ export default function Footer() {
 
             <div className="mt-5 space-y-5">
               <div className="flex gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
 
                 <p className="text-sm leading-6 text-slate-400">
                   Plaza 66, 3rd floor, sector A, Avenue 4, DHA Phase 6, Lahore,
@@ -119,21 +125,21 @@ export default function Footer() {
               </div>
 
               <div className="flex gap-3">
-                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
 
                 <Link
-                  href="mailto:info@veritastesting.com"
+                  href="mailto:info@veritaslabpvt.com"
                   className="text-sm text-slate-400 transition-colors hover:text-white"
                 >
-                  info@veritastesting.com
+                  info@veritaslabpvt.com
                 </Link>
               </div>
 
               <p className="text-sm">
-                Mr. Luqman <span className="text-sky-400">Asst Technician</span>
+                Mr. Luqman <span className="text-sky-600">Asst Technician</span>
               </p>
               <div className="flex gap-3">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
                 <Link
                   href="tel:+920000000000"
                   className="text-sm text-slate-400 transition-colors hover:text-white"
