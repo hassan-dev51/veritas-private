@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function TestingHero({ data }: Props) {
-  log("TestingHero data:", data); // Log the data to the console for debugging
   return (
     <section className="relative isolate overflow-hidden bg-slate-800">
       {/* Background */}

@@ -52,9 +52,7 @@ export default function TestingServices({ services }: TestingServicesProps) {
                       />
                     </div>
                   ) : (
-                    <div className="flex aspect-4/3 items-center justify-center rounded-2xl border border-slate-200 bg-slate-100 text-sm text-slate-400">
-                      Image Uploaded for {service.title} is not available
-                    </div>
+                    null
                   )}
                 </div>
 
