@@ -26,7 +26,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
 
 const TRUST_SIGNALS = [
-  { icon: ShieldCheck, label: "ISO/IEC 17025 accredited" },
+  { icon: ShieldCheck, label: "ISO/IEC 17025 Qualified" },
   { icon: Award, label: "PNAC recognized" },
   { icon: Building2, label: "China-affiliated membership" },
 ];

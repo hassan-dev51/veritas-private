@@ -10,7 +10,6 @@ import {
 
 import type { MaterialTesting } from "@/lib/sanity/types";
 import Image from "next/image";
-import { log } from "console";
 
 interface Props {
   data: MaterialTesting;
