@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 const slides = [
   {
     image: "/images/bio-burden.jpg",
-    eyebrow: "VERITAS Lab Pvt Ltd",
+    eyebrow: "Veritas Lab Testing Pvt Ltd",
     title: "Testing That Supports Better Medical Devices",
     description:
       "A dedicated medical-device testing laboratory supporting manufacturers with reliable, technically focused testing and clear reporting.",

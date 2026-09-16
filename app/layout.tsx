@@ -38,12 +38,12 @@ export const metadata: Metadata = {
 
   authors: [
     {
-      name: "Veritas Lab Pvt Ltd",
+      name: "Veritas Lab Testing Pvt Ltd",
     },
   ],
 
-  creator: "Veritas Lab Pvt Ltd",
-  publisher: "Veritas Lab Pvt Ltd",
+  creator: "Veritas Lab Testing Pvt Ltd",
+  publisher: "Veritas Lab Testing Pvt Ltd",
 
   metadataBase: new URL("https://labs.veritascert.com"),
 

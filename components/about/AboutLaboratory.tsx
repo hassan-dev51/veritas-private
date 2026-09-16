@@ -74,7 +74,7 @@ export default function AboutLaboratory() {
             </h2>
 
             <p className="mt-6 leading-8 text-slate-600">
-              Veritas Lab Pvt Ltd operates as a private limited laboratory with a
+              Veritas Lab Testing Pvt Ltd operates as a private limited laboratory with a
               focused objective: to provide dependable testing information for
               medical-device manufacturers and exporters.
             </p>

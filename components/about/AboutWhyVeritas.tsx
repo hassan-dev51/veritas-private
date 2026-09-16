@@ -17,7 +17,7 @@ export default function AboutWhyVeritas() {
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
             <div className="bg-slate-950 p-8 text-white sm:p-12 lg:p-16">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                Why Veritas Lab Pvt Ltd
+                Why Veritas Lab Testing Pvt Ltd
               </p>
 
               <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">

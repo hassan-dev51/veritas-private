@@ -91,14 +91,14 @@ export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background">
       <TopBar />
-      <div className="container flex h-18 items-center justify-between px-4 md:px-8">
+      <div className="container flex h-20 items-center justify-between px-4 md:px-8">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/images/logo.png"
-            alt="Veritas Lab Pvt Ltd"
+            src="/images/new logo.jpeg"
+            alt="Veritas Lab Testing Pvt Ltd"
             width={180}
             height={60}
             className="h-20 w-auto object-contain"

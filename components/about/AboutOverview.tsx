@@ -28,7 +28,7 @@ export default function AboutOverview() {
         <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">
-              About Veritas Lab Pvt Ltd
+              About Veritas Lab Testing Pvt Ltd
             </p>
 
             <h2 className="mt-5 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
@@ -40,7 +40,7 @@ export default function AboutOverview() {
 
           <div>
             <p className="text-xl leading-9 text-slate-700">
-              Veritas Lab Pvt Ltd is a private limited testing laboratory dedicated
+              Veritas Lab Testing Pvt Ltd is a private limited testing laboratory dedicated
               to supporting medical-device manufacturers, exporters, and
               organizations involved in the development and production of
               medical and surgical devices.

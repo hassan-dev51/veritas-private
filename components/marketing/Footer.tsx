@@ -45,8 +45,8 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/logo2.jpeg"
-                alt="Veritas Lab Pvt Ltd"
+                src="/images/new logo.jpeg"
+                alt="Veritas Lab Testing Pvt Ltd"
                 width={180}
                 height={160}
                 className="h-20 w-auto object-contain"

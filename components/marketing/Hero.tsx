@@ -27,7 +27,7 @@ import { Button } from "@/components/ui/button";
 
 const TRUST_SIGNALS = [
   { icon: ShieldCheck, label: "ISO/IEC 17025 Qualified" },
-  { icon: Award, label: "PNAC recognized" },
+  { icon: Award, label: "Certified ISO 9001:2015" },
   { icon: Building2, label: "China-affiliated membership" },
 ];
 

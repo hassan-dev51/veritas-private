@@ -8,7 +8,6 @@ interface TestingServicesProps {
 }
 
 export default function TestingServices({ services }: TestingServicesProps) {
-  console.log("TestingServices props:", services); // Log the props to the console for debugging
   return (
     <section className="bg-slate-50 py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -51,9 +50,7 @@ export default function TestingServices({ services }: TestingServicesProps) {
                         className="aspect-4/3 w-full object-cover transition duration-500 hover:scale-105"
                       />
                     </div>
-                  ) : (
-                    null
-                  )}
+                  ) : null}
                 </div>
 
                 <div className={reversed ? "lg:order-1" : "lg:order-2"}>

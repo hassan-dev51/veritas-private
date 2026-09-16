@@ -24,7 +24,7 @@ export default function AboutCTA() {
             href="/contact"
             className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-950 px-7 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
-            Contact Veritas Lab Pvt Ltd
+            Contact Veritas Lab Testing Pvt Ltd
             <ArrowRight className="size-4" />
           </Link>
         </div>
