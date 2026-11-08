@@ -6,14 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.9.25",
+    "@hookform/resolvers": "^7.0.3",
+    "@neondatabase/serverless": "^1.2.0",
     "@portabletext/react": "^8.0.1",
+    "@prisma/adapter-neon": "^7.10.1",
+    "@prisma/client": "^7.10.1",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.31.2",
     "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.1.1",
     "cn": "^0.2.5",
+    "dotenv": "^18.0.9",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^1.41.0",
@@ -23,7 +31,9 @@
     "nodemailer": "^10.0.3",
     "radix-ui": "^1.6.7",
     "react": "19.2.8",
+    "react-day-picker": "^10.0.2",
     "react-dom": "19.2.8",
+    "react-hook-form": "^7.91.0",
     "sanity": "^5.31.2",
     "shadcn": "^4.21.0",
     "styled-components": "^6.5.3",
@@ -38,6 +48,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "prisma": "7.10.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

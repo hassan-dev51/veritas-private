@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==========================================
+// TEST CATALOG
+// ==========================================
+
+model Test {
+  id          String  @id @default(cuid())
+  name        String  @unique @db.VarChar(150)
+  code        String  @unique @db.VarChar(12)
+  description String? @db.Text
+  isActive    Boolean @default(true)
+
+  reports TestReport[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive, name])
+  @@map("tests")
+}
+
+// ==========================================
+// TEST REPORTS
+// ==========================================
+
+model TestReport {
+  id       String @id @default(cuid())
+  reportNo String @unique @db.VarChar(40)
+
+  testId String
+  test   Test   @relation(fields: [testId], references: [id], onDelete: Restrict)
+
+  // Historical snapshots
+  testNameSnapshot String @db.VarChar(150)
+  testCodeSnapshot String @db.VarChar(12)
+
+  // Client information
+  clientName String @db.VarChar(200)
+  address    String @db.Text
+
+  // Test information
+  serviceDescription String @db.Text
+  regulation         String @db.VarChar(200)
+  studyScope         String @db.Text
+
+  // Date fields
+  testStartDate   DateTime @db.Date
+  testEndDate     DateTime @db.Date
+  finalReportDate DateTime @db.Date
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([testId])
+  @@index([clientName])
+  @@index([finalReportDate])
+  @@map("test_reports")
+}

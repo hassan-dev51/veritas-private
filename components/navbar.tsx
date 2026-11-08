@@ -6,7 +6,6 @@ import {
   Menu,
   TestTube2,
   Dna,
-  ShieldCheck,
   RefreshCw,
   Bug,
   Flame,
@@ -26,6 +25,7 @@ import {
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -89,6 +89,7 @@ const labServices = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background">
@@ -139,6 +140,14 @@ export function Navbar() {
                   <Link href="/about">About Us</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <Link href="/verify">Verification</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -154,66 +163,94 @@ export function Navbar() {
         </div>
 
         {/* Mobile Navigation (Sheet Component) */}
+        {/* Mobile Navigation (Sheet Component) */}
         <div className="flex lg:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Toggle Menu">
+              <Button variant="ghost" size="icon" aria-label="Open menu">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
+
             <SheetContent
               side="right"
-              className="w-75 sm:w-100 overflow-y-auto"
+              className="flex w-[85%] max-w-sm flex-col gap-0 p-0"
             >
-              <SheetHeader className="text-left border-b pb-4 mb-4">
-                <SheetTitle className="flex items-center space-x-2">
-                  <ShieldCheck className="h-5 w-5 text-blue-600" />
-                  <span>Veritas Lab</span>
-                </SheetTitle>
+              {/* Header */}
+              <SheetHeader className="border-b px-5 py-4 pr-14 text-left">
+                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+                <SheetDescription className="sr-only">
+                  Browse testing services and company pages
+                </SheetDescription>
+                <Link href="/" onClick={closeMenu} className="inline-flex">
+                  <Image
+                    src="/images/new logo.jpeg"
+                    alt="Veritas Lab Testing Pvt Ltd"
+                    width={180}
+                    height={60}
+                    className="h-12 w-auto object-contain"
+                    priority
+                  />
+                </Link>
               </SheetHeader>
 
-              <div className="flex flex-col space-y-6">
-                {/* Mobile Services Section */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              {/* Scrollable content */}
+              <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-5">
+                {/* Services */}
+                <div className="space-y-2">
+                  <h4 className="px-3 text-xs font-bold uppercase tracking-wider text-slate-500">
                     Testing Capabilities
                   </h4>
-                  <div className="flex flex-col space-y-2">
+                  <ul className="flex flex-col">
                     {labServices.map((service) => {
                       const Icon = service.icon;
                       return (
-                        <Link
-                          key={service.title}
-                          href={service.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center space-x-3 rounded-md p-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                        >
-                          <Icon className="h-4 w-4 text-blue-600 shrink-0" />
-                          <span className="font-medium text-slate-800 dark:text-slate-200">
-                            {service.title}
-                          </span>
-                        </Link>
+                        <li key={service.title}>
+                          <Link
+                            href={service.href}
+                            onClick={closeMenu}
+                            className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+                          >
+                            <Icon className="h-4 w-4 shrink-0 text-blue-600" />
+                            <span className="font-medium text-slate-800 dark:text-slate-200">
+                              {service.title}
+                            </span>
+                          </Link>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 </div>
 
-                {/* Mobile Direct Links */}
-                <div className="border-t pt-4 flex flex-col space-y-2">
-                  <Link
-                    href="#about"
-                    onClick={() => setIsOpen(false)}
-                    className="text-sm font-medium py-1.5 hover:text-blue-600"
-                  >
-                    About Us
-                  </Link>
-                </div>
+                {/* Direct links */}
+                <ul className="flex flex-col border-t pt-4">
+                  <li>
+                    <Link
+                      href="/about"
+                      onClick={closeMenu}
+                      className="block rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/verify"
+                      onClick={closeMenu}
+                      className="block rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+                    >
+                      Verification
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
 
-                {/* Mobile CTA */}
+              {/* Pinned CTA */}
+              <div className="border-t p-4">
                 <Link
-                  href={"/contact"}
-                  onClick={() => setIsOpen(false)}
-                  className="w-full bg-[#13314B] hover:bg-[#1a4a6e] mt-2 px-4 py-3"
+                  href="/contact"
+                  onClick={closeMenu}
+                  className="flex w-full items-center justify-center rounded-md bg-[#13314B] px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-[#1a4a6e]"
                 >
                   Contact Us
                 </Link>
